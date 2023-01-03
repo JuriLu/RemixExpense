@@ -1,5 +1,7 @@
 import { Outlet } from "@remix-run/react";
+import ExpensesList from "~/components/expenses/ExpensesList";
 import expensesStyle from "~/styles/expenses.css";
+import { DUMMY_EXPENSES } from "./expenses/analysis";
 
 // Layout Components can be used like representative components
 // In Our case we create a route file expenses.jsx that will be a layout components and a
@@ -8,12 +10,16 @@ import expensesStyle from "~/styles/expenses.css";
 //  will be loaded inside this expenses.jsx through Outlet (just like Angular).
 // You can also remove indes.jsx from expenses folder
 
+const dummyExpenses = DUMMY_EXPENSES
+
 export default function ExpensesLayout() {
   return (
-    <main>
-      <p>Shared Element</p>
+    <>
       <Outlet />
-    </main>
+      <main>
+        <ExpensesList expenses={DUMMY_EXPENSES} />
+      </main>
+    </>
   );
 }
 
@@ -21,3 +27,4 @@ export default function ExpensesLayout() {
 export function links() {
   return [{ rel: "stylesheet", href: expensesStyle }];
 }
+

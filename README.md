@@ -43,7 +43,8 @@ When you ran `npx create-remix@latest` there were a few choices for hosting. You
 
 ```sh
 cd ..
-# create a new project, and pick a pre-configured host
+# create a
+ new project, and pick a pre-configured host
 npx create-remix@latest
 cd my-new-remix-app
 # remove the new project's app (not the old one!)
@@ -62,3 +63,5 @@ NOTES:
 2. Layout Routes => Or Layout components are like shared components in Angular that can be placed in the main index and will not be repeated in each component     
 
 3. function Chart({ expenses }) --> Seems to be a databinding input for React components
+
+4. In expenses.jsx file what we want to do is show the ExpenseList component which will be a shared component between $id and add, so we do it here, in this file. And for Semantic reasons we put the Outlet tag outside main and put the ExpenseList in main that will be a shared component. [The Add component will be set as a Modal]
