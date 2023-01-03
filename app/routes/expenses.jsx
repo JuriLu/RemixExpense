@@ -1,4 +1,5 @@
 import { Outlet } from "@remix-run/react";
+import expensesStyle from "~/styles/expenses.css";
 
 // Layout Components can be used like representative components
 // In Our case we create a route file expenses.jsx that will be a layout components and a
@@ -10,8 +11,13 @@ import { Outlet } from "@remix-run/react";
 export default function ExpensesLayout() {
   return (
     <main>
-      <h1>Shared Element</h1>
+      <p>Shared Element</p>
       <Outlet />
     </main>
   );
+}
+
+// Styles here will be available also for the nested routes of this route
+export function links() {
+  return [{ rel: "stylesheet", href: expensesStyle }];
 }
