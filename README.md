@@ -58,3 +58,5 @@ NOTES:
 1. index (the word) denotes the main page that should be loaded for a given path
      For Example, in Expenses folder in routes, index.jsx is expenses/   route 
      Another Example, in Routes folder, index.jsx stands for /    route, so just the main route [your-domain.com/] => index.jsx
+
+2. Layout Routes => Or Layout components are like shared components in Angular that can be placed in the main index and will not be repeated in each component     

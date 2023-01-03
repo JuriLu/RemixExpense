@@ -21,6 +21,7 @@ export default function App() {
         <Links />
       </head>
       <body>
+        {/* Outlet here is a Layout Component */}
         <Outlet />
         <ScrollRestoration />
         <Scripts />

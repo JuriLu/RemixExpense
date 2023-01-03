@@ -1,0 +1,17 @@
+import { Outlet } from "@remix-run/react";
+
+// Layout Components can be used like representative components
+// In Our case we create a route file expenses.jsx that will be a layout components and a
+//  expenses folders , that will be the sub routes of expenses file. You put the <Outlet />
+//  inside the expenses.jsx and whatever HTML element you want and the sub routes of expenses
+//  will be loaded inside this expenses.jsx through Outlet (just like Angular).
+// You can also remove indes.jsx from expenses folder
+
+export default function ExpensesLayout() {
+  return (
+    <main>
+      <h1>Shared Element</h1>
+      <Outlet />
+    </main>
+  );
+}
