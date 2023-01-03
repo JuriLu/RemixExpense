@@ -60,3 +60,5 @@ NOTES:
      Another Example, in Routes folder, index.jsx stands for /    route, so just the main route [your-domain.com/] => index.jsx
 
 2. Layout Routes => Or Layout components are like shared components in Angular that can be placed in the main index and will not be repeated in each component     
+
+3. function Chart({ expenses }) --> Seems to be a databinding input for React components
