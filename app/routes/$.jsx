@@ -5,5 +5,6 @@ export function loader({params}){
      if(params['*'] === 'exp'){
           return redirect('/expenses')
      }
-     return null;
+     
+     return redirect('/notFound');
 }
