@@ -1,8 +1,9 @@
 // In this case this sub route will still be part of expenses route , but now part of the 
 //  layout component
+// Resource Route
 
-export default function ExpensesRawPage(){
-  return (
-    <h1>Expenses Raw Page</h1>
-  )
+import { DUMMY_EXPENSES } from "./__app/expenses.analysis";
+
+export function loader(){
+  return DUMMY_EXPENSES
 }

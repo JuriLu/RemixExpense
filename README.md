@@ -56,6 +56,8 @@ cp -R ../my-old-remix-app/app app
 
 NOTES:
 
+** If the code is right, and may ocurre an error unexplainable, make a npm run build
+
 1. index (the word) denotes the main page that should be loaded for a given path
      For Example, in Expenses folder in routes, index.jsx is expenses/   route 
      Another Example, in Routes folder, index.jsx stands for /    route, so just the main route [your-domain.com/] => index.jsx
@@ -70,3 +72,7 @@ NOTES:
 
 6. __name --> Pathless Layout Route => With this we can include the route and its subRoutes that may be included within the Layout of the main route or not (Depends if you want to use them within the Layout route and share the shared components).
 This is made for example in the expenses.analysis.jsx route that it is decided to be out of the expenses folder (but still be a subroute because of renamed expenses.analysis.jsx, so its a subroute just in route level and do not share the links() styles and the shared components),but we need to use the links() function for styles from expenses. We put them in __app.jsx and will be included in __app folder.  
+
+7. Resource Routes are Routes which just load data ( loader()) , it doesn't return a component
+
+8. Splat Route => Its like wildcard route, when no other route matches, this activates.
