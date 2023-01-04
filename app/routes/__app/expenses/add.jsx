@@ -10,10 +10,8 @@ export default function AddExpensesPage() {
   }
 
   return (
-    <main>
       <Modal onClose={closeHandler}>
         <ExpenseForm />
-      </Modal>
-    </main>
+      </Modal>   
   );
 }

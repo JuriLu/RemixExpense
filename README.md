@@ -67,3 +67,6 @@ NOTES:
 4. In expenses.jsx file what we want to do is show the ExpenseList component which will be a shared component between $id and add, so we do it here, in this file. And for Semantic reasons we put the Outlet tag outside main and put the ExpenseList in main that will be a shared component. [The Add component will be set as a Modal
 
 5. Public is a special folder, everything inside there is made public by Remix and can be requestabl in a static way by every route (to cut short, instead of public/images/imgpath.png  can be shorten to images/imgpath.png)
+
+6. __name --> Pathless Layout Route => With this we can include the route and its subRoutes that may be included within the Layout of the main route or not (Depends if you want to use them within the Layout route and share the shared components).
+This is made for example in the expenses.analysis.jsx route that it is decided to be out of the expenses folder (but still be a subroute because of renamed expenses.analysis.jsx, so its a subroute just in route level and do not share the links() styles and the shared components),but we need to use the links() function for styles from expenses. We put them in __app.jsx and will be included in __app folder.  

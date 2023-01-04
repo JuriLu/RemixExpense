@@ -10,11 +10,8 @@ export default function UpdateExpensesPage() {
   }
 
   return (
-    <>
       <Modal onClose={closeHandler}>
         <ExpenseForm />
       </Modal>
-      <h1>Ta mor vesh qe jom ne update</h1>
-    </>
   );
 }
