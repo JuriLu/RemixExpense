@@ -64,4 +64,6 @@ NOTES:
 
 3. function Chart({ expenses }) --> Seems to be a databinding input for React components
 
-4. In expenses.jsx file what we want to do is show the ExpenseList component which will be a shared component between $id and add, so we do it here, in this file. And for Semantic reasons we put the Outlet tag outside main and put the ExpenseList in main that will be a shared component. [The Add component will be set as a Modal]
+4. In expenses.jsx file what we want to do is show the ExpenseList component which will be a shared component between $id and add, so we do it here, in this file. And for Semantic reasons we put the Outlet tag outside main and put the ExpenseList in main that will be a shared component. [The Add component will be set as a Modal
+
+5. Public is a special folder, everything inside there is made public by Remix and can be requestabl in a static way by every route (to cut short, instead of public/images/imgpath.png  can be shorten to images/imgpath.png)
