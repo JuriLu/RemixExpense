@@ -8,6 +8,7 @@ import {
 } from "@remix-run/react";
 
 import sharedStyles from "~/styles/shared.css";
+import MainHeader from "./components/navigation/MainHeader";
 
 export const meta = () => ({
   charset: "utf-8",
@@ -34,6 +35,7 @@ export default function App() {
       </head>
       <body>
         {/* Outlet here is a Layout Component */}
+        <MainHeader/>
         <Outlet />
         <ScrollRestoration />
         <Scripts />
