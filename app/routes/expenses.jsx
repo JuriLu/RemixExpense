@@ -1,7 +1,7 @@
 import { Outlet } from "@remix-run/react";
 import ExpensesList from "~/components/expenses/ExpensesList";
 import expensesStyle from "~/styles/expenses.css";
-import { DUMMY_EXPENSES } from "./expenses/analysis";
+import { DUMMY_EXPENSES } from "./expenses.analysis";
 
 // Layout Components can be used like representative components
 // In Our case we create a route file expenses.jsx that will be a layout components and a
