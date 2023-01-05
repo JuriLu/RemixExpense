@@ -3,6 +3,7 @@ import { useNavigate } from "@remix-run/react";
 import ExpenseForm from "~/components/expenses/ExpenseForm";
 import Modal from "~/components/util/Modal";
 import { addExpense } from "~/data/expenses.server";   // because of .sever this will be imported on backend bundle
+import { validateExpenseInput } from "~/data/validation.server";
 
 export default function AddExpensesPage() {
   const navigate = useNavigate()  // useNavigate() => Remix Hook
@@ -23,13 +24,17 @@ export default function AddExpensesPage() {
 
 export async function action({request}){
   const formData = await request.formData()
-  // formData.get('title')  One Method
   const expenseData = Object.fromEntries(formData) //get Key:Value Pairs Object
-  console.log(expenseData,formData);
+  // formData.get('title')  One Method
+
+  try {
+    validateExpenseInput(expenseData);
+  } catch (error) {
+    return error; // when this happens it is loaded simply like data, and it can be catched with useActionData() at expenseForm Component
+  }
 
   await addExpense(expenseData)
-
-  return redirect('/expenses') //Must return smth se sbo
+  return redirect('/expenses')  //Must return smth se sbo
 }
 
 /* NOTES
