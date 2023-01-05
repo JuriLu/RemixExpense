@@ -4,8 +4,8 @@ import Chart from "~/components/expenses/Chart";
    export default function ExpensesAnalysisPage() {
      return (
        <main>
-         <Chart expenses={} />
-         <ExpenseStatistics expenses={} />
+         {/* <Chart expenses={} /> */}
+         {/* <ExpenseStatistics expenses={} /> */}
        </main>
      );
    }
