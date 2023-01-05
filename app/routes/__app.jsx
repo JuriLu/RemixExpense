@@ -13,6 +13,7 @@ export default function ExpensesLayout(){
      )
 }
 
+// Styles here will be available also for the nested routes of this route
 export function links(){
      return [{rel: 'stylesheet',href: expensesStyles}]
 }
