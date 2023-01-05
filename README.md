@@ -99,3 +99,5 @@ BACKEND
 if Production -> we establish a connection to MongoDb through Prisma Client
 if Development ->we do the same thing, but we make sure that we don't create multiple Database
                  connections accidentaly, because Remix automatically refreshes the website , when we make changes in out code, to preview changes.We make sure that we use one db connection
+
+6. npx prisma generate -> will create a code bundle based on schema.prisma which makes it easy to interact with prisma 
