@@ -1,8 +1,12 @@
-import { Form, Link, useActionData } from "@remix-run/react";
+import { Form, Link, useActionData, useTransition as useNavigation } from "@remix-run/react";
+import { FaTruckLoading } from "react-icons/fa";
 
 function ExpenseForm() {
   const today = new Date().toISOString().slice(0, 10); // yields something like 2023-09-10
   const validationErrors = useActionData();
+  
+  const navigation = useNavigation();
+  const isSubmitting = navigation.state !== 'idle'
 
   return (
     <Form method="post" className="form" id="expense-form">
@@ -35,7 +39,7 @@ function ExpenseForm() {
         )
       }
       <div className="form-actions">
-        <button>Save Expense</button>
+        <button disabled={isSubmitting}>{isSubmitting? <span>Saving... <FaTruckLoading/></span> : 'Save Expense' }</button>
         <Link to="..">Cancel</Link>
       </div>
     </Form>
