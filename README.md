@@ -89,3 +89,13 @@ BACKEND
    @db.ObjectId -> Internal type used by MongoDB in their db
 
    @default(now()) -> add the current timestamp when an 'expense is created'
+
+3. action() -> Special keyword, that will run when a NON-GET request reaches the route(where this   function is)   
+
+4. loader() -> Special keyword,run on GET request reaches the route (oposite of action)
+
+5. database.server.js code Logic -> We check if we are in Production or Development
+
+if Production -> we establish a connection to MongoDb through Prisma Client
+if Development ->we do the same thing, but we make sure that we don't create multiple Database
+                 connections accidentaly, because Remix automatically refreshes the website , when we make changes in out code, to preview changes.We make sure that we use one db connection

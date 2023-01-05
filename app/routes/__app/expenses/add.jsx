@@ -15,3 +15,9 @@ export default function AddExpensesPage() {
       </Modal>   
   );
 }
+
+// Code that does talks with mongodb and stores the data
+
+export function action(){
+  
+}
