@@ -56,7 +56,8 @@ cp -R ../my-old-remix-app/app app
 
 NOTES:
 
-** If the code is right, and may ocurre an error unexplainable, make a npm run build
+** If the code is right, and may ocurre an error unexplainable, make a npm run build (npm run dev)
+** After Backend modifications rerun the project npm run dev
 
 1. index (the word) denotes the main page that should be loaded for a given path
      For Example, in Expenses folder in routes, index.jsx is expenses/   route 
