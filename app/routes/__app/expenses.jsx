@@ -14,7 +14,7 @@ import { getExpenses } from "~/data/expenses.server";
 
 export default function ExpensesLayout() {
   const expenses = useLoaderData();
-  
+
   return (
     <>
       <Outlet />
@@ -34,8 +34,10 @@ export default function ExpensesLayout() {
 }
 
 export async function loader(){
-   const expenses = await getExpenses()  //yields a promise
-   return json(expenses)
+   console.log('EXPENSES LOADER')
+   return getExpenses()
+  //  const expenses = await getExpenses()  //yields a promise
+  //  return json(expenses)
 }
 
 
