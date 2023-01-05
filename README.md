@@ -76,3 +76,16 @@ This is made for example in the expenses.analysis.jsx route that it is decided t
 7. Resource Routes are Routes which just load data ( loader()) , it doesn't return a component
 
 8. Splat Route => Its like wildcard route, when no other route matches, this activates.
+
+BACKEND
+
+1. We Tell Prisma how our data will look like, by creating a model
+
+2. @id tells Prisma that this field will act as the primary id of the data entry (schema.prisma)
+
+   @default(auto()) -> ensures that the id will be generate automatically  and we don't need to run it manually
+   id String .... @map("_id") Ensure that Prisma will add an extra _id field in our MongoDB that will map it with id (in backend we will work with id but in db will be _id)  
+
+   @db.ObjectId -> Internal type used by MongoDB in their db
+
+   @default(now()) -> add the current timestamp when an 'expense is created'
