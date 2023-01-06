@@ -44,7 +44,7 @@
 
 .expense-item {
   margin: 1.5rem 0;
-  padding: 1rem;
+  padding: 2rem;
   background-color: var(--color-primary-300);
   border-radius: 8px;
   display: flex;
@@ -152,4 +152,14 @@
   margin: 0;
   color: var(--color-primary-10);
   font-size: 2rem;
+}
+
+.biggerFonts{
+  font-size: 20px;
+  transition: 0.25s;
+}
+
+.biggerFonts:hover{
+  font-size: 25px;
+  transition: 0.25s;
 }

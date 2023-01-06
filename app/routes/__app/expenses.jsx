@@ -34,8 +34,8 @@ export default function ExpensesLayout() {
 }
 
 export async function loader(){
-   console.log('EXPENSES LOADER')
-   return getExpenses()
+   const expenses = await getExpenses();
+   return expenses
   //  const expenses = await getExpenses()  //yields a promise
   //  return json(expenses)
 }
