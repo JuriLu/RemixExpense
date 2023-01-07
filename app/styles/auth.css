@@ -37,3 +37,22 @@
 .icon-img svg {
   animation: fade-slide-up 1.5s ease-out forwards;
 }
+
+.homeIconAuth{
+  margin-left: 3px;
+  padding-top: 4px;
+}
+
+.homeSpan{
+  font-size: 15px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: indigo;
+  transition: 0.25s;
+}
+
+.homeSpan:hover{
+  font-size: 15px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: white;
+  transition: 0.25s;
+}
