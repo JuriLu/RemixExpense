@@ -2,6 +2,12 @@
 //  layout component
 // Resource Route
 
-export function loader(){
-  return null
+import { getExpenses } from "~/data/expenses.server"
+
+export async function loader(){
+  const expenses =  await getExpenses()
+  if(!expenses || expenses.length === 0) {
+    return 'No Data Loaded'
+  }
+  return expenses
 }
