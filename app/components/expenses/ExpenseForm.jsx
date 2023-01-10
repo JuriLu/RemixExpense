@@ -1,3 +1,4 @@
+import { json } from "@remix-run/node";
 import { 
   Form, 
   Link,
@@ -15,9 +16,15 @@ function ExpenseForm() {
   const matches = useMatches(); // use all the data of this parent path
   const expenses = matches.find(match => match.id === 'routes/__app/expenses').data // console.log(matches) to see it.This Gets us the array with all the data
   const expenseData = expenses.find(expense => expense.id === params.id) 
-  const navigation = useNavigation()
-  ;
+  const navigation = useNavigation();
 
+ 
+  //translation: if we have and ID and still can not find expenseData (we are on edit mode but id doesn't exist)
+ if(params.id && !expenseData){
+   return <p>Invalid Expense Id.</p>   //Method 1
+  // throw new Response()      Method 2
+ }
+ 
   const defaultValues = expenseData ? {
     title: expenseData.title,
     amount: expenseData.amount,
