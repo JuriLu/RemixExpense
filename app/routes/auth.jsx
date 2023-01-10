@@ -1,4 +1,6 @@
+import { redirect } from "@remix-run/node";
 import AuthForm from "~/components/auth/AuthForm";
+import { signup } from "~/data/auth.server";
 import { validateCredentials } from "~/data/validation.server";
 import authStyles from "~/styles/auth.css";
 
@@ -24,7 +26,8 @@ export async function action({ request }) {
   if (authMode === "login") {
     //login Logic
   } else {
-    //signup Logic
+    await signup(credentials);
+    return redirect('/expenses') 
   }
 }
 
