@@ -48,7 +48,7 @@ function Document ({title, children}){
 
 export default function App() {
   return (
-   <Document>
+   <Document title="Expense App">
     <Outlet/> {/* instead of the children */}
    </Document>
   );
@@ -56,7 +56,6 @@ export default function App() {
 
 export function CatchBoundary(){
 const caughtResponse =  useCatch();
-caughtResponse.data
 
   return <Document title={caughtResponse.statusText}>
     <main>
