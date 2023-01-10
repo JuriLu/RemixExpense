@@ -2,7 +2,8 @@
 import Chart from "~/components/expenses/Chart";
 import { getExpenses } from "~/data/expenses.server";
 import { json } from "react-router";
-import { useLoaderData } from "@remix-run/react";
+import { useCatch, useLoaderData } from "@remix-run/react";
+import Error from "~/components/util/Error";
    
    export default function ExpensesAnalysisPage() {
     const expenses = useLoaderData()
@@ -28,4 +29,15 @@ import { useLoaderData } from "@remix-run/react";
         )
     }
     return expenses // return json(expenses) another way
+   }
+
+   export function CatchBoundary(){
+
+    const caughtResponse = useCatch();
+
+    return <main>
+      <Error title={caughtResponse.statusText}>
+        <p>{caughtResponse.data?.message || `Something went wrong, could not load expenses`}</p>
+      </Error>
+    </main>
    }
