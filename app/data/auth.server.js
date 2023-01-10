@@ -1,5 +1,5 @@
 import { prisma } from './database.server'
-import { hash } from 'bcryptjs';
+import { hash, compare } from 'bcryptjs';
 
 export async function signup({email,password}){  // Object destructuring
      //VALIDATION FOR UNIQUE EMAIL
@@ -20,6 +20,26 @@ export async function signup({email,password}){  // Object destructuring
           password:passwordHash
      }
 })
+}
 
+export async function login({email,password}){
+     const existingUser = await prisma.user.findFirst({ where: { email } })
 
+     if(!existingUser) {
+          const error = new Error (
+               `Couldn't log you in, please check your credentials`
+               );
+          error.status = 401;
+          throw error
+        }
+
+     const passwordCorrect = await compare(password,existingUser.password)
+
+     if (!passwordCorrect){
+          const error = new Error (
+               `Couldn't log you in, please check your credentials`
+               );
+          error.status = 401;
+          throw error
+     }
 }
