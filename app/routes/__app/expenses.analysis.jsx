@@ -31,7 +31,7 @@ import Error from "~/components/util/Error";
     return expenses // return json(expenses) another way
    }
 
-   export function CatchBoundary(){
+   export function CatchBoundary(){ // Catch boundary handles error responses
 
     const caughtResponse = useCatch();
 
