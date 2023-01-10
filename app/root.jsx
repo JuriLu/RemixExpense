@@ -58,7 +58,7 @@ export function CatchBoundary(){
 const caughtResponse =  useCatch();
 caughtResponse.data
 
-  return <Document>
+  return <Document title={caughtResponse.statusText}>
     <main>
       <Error title={caughtResponse.statusText}>
         <p>{caughtResponse.data?.message || 'Something Wrong, please try again'}</p>
@@ -67,6 +67,18 @@ caughtResponse.data
     </main>
   </Document>
 }
+
+// Error Boundary is for un handled errors [for e.x backend errors, server errors]
+export function ErrorBoundary({error}){
+    return <Document title="An error ocurred">
+      <main>
+        <Error title="An error ocurred">
+          <p>{error.message || 'Something Wrong, please try again'}</p>
+          <p>Back to<Link to=''> Safety</Link></p>
+        </Error>
+      </main>
+    </Document>
+  }
 
 export function links() {
   return [{ rel: "stylesheet", href: sharedStyles }];

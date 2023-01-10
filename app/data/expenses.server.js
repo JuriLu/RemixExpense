@@ -19,8 +19,8 @@ export async function getExpenses(){
      return expenses
   } catch (error) {
      console.log(error)
-     throw error
-  }
+     throw new Error('Can not read data.');
+}
 }
 
 export async function getExpense(id){
@@ -29,7 +29,7 @@ export async function getExpense(id){
           return expense
      } catch (error) {
           console.log(error);
-          throw error;
+          throw new Error('Failed to add expense.');
      }
 }
 
@@ -45,7 +45,7 @@ export async function updateExpense(id, expenseData){
           })
      } catch (error) {
           console.log(error);
-          throw error
+          throw new Error('Failed to update expense.');
      }
 }
 
@@ -56,6 +56,6 @@ export async function deleteExpense(id){
           });
      } catch (error) {
           console.log(error)
-          throw error;
+          throw new Error('Failed to delete expense.');
      }
 }
