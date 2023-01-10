@@ -1,9 +1,9 @@
 import { prisma } from './database.server'
-import { createCookieSessionStorage } from '@remix-run/node';
+import { createCookieSessionStorage, redirect } from '@remix-run/node';
 
 import { hash, compare } from 'bcryptjs';
 
-const SESSION_SECRET = process.eng.SESSION_SECRET
+const SESSION_SECRET = process.env.SESSION_SECRET
 
 const sessionStorage = createCookieSessionStorage({
      cookie:{
@@ -14,6 +14,16 @@ const sessionStorage = createCookieSessionStorage({
           httpOnly: true
      }
 });
+
+async function createUserSession(userId,redirectPath){
+     const session = await sessionStorage.getSession();
+     session.set('userId',userId)
+     return redirect(redirectPath,{
+          headers:{
+               'Set-Cookie':await sessionStorage.commitSession(session)
+          }
+     })                                        //logic to create a new response, in which will be stored the cookie
+}
 
 export async function signup({email,password}){  // Object destructuring
      //VALIDATION FOR UNIQUE EMAIL
@@ -28,12 +38,14 @@ export async function signup({email,password}){  // Object destructuring
    //HASHING PASSWORD
    const passwordHash = await hash(password,12)
 
-   await prisma.user.create({
+   const user = await prisma.user.create({
      data:{
           email:email,
           password:passwordHash
      }
-})
+     })
+
+     return createUserSession(user.id,'/expenses')
 }
 
 export async function login({email,password}){
@@ -57,5 +69,6 @@ export async function login({email,password}){
           throw error
      }
 
+    return createUserSession(existingUser.id,'/expenses')
 
 }
