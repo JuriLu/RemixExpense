@@ -23,12 +23,20 @@ export async function action({ request }) {
     return error
   }
 
-  if (authMode === "login") {
-    //login Logic
-  } else {
-    await signup(credentials);
-    return redirect('/expenses') 
+  try {
+    if (authMode === "login") {
+      //login Logic
+    } else {
+      await signup(credentials);
+      return redirect('/expenses') 
+    }
+  } catch (error) {
+    if(error.status === 422){
+      return {message:error.message}
+    }
   }
+
+  
 }
 
 export function links() {
