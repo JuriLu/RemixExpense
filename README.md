@@ -108,3 +108,8 @@ connections accidentaly, because Remix automatically refreshes the website , whe
 8. When you have a website or a page on a website , when you have multiple buttons that send request to some
    actions behind the scenes when clicked, and you don't want to navigate to a different page when such button
    is click [return navigate('/expense')] useFetcher()
+
+9. When using that Guard loader in the main route [expenses] it works for the child routes too, but there is a catch.Eventhough that
+   throws a redirect id doesn't stop the loader of the child to run, this means that the loader() function of the childs runs, 
+   which could lead to errors or even return data to the user.That is why we need to put the Guard Loader to each of the child
+   route, not only to the parent

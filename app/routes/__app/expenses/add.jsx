@@ -1,40 +1,44 @@
-import { redirect } from "@remix-run/node";
-import { useNavigate } from "@remix-run/react";
+import {redirect} from "@remix-run/node";
+import {useNavigate} from "@remix-run/react";
 import ExpenseForm from "~/components/expenses/ExpenseForm";
 import Modal from "~/components/util/Modal";
-import { addExpense } from "~/data/expenses.server";   // because of .sever this will be imported on backend bundle
-import { validateExpenseInput } from "~/data/validation.server";
+import {addExpense} from "~/data/expenses.server";   // because of .sever this will be imported on backend bundle
+import {validateExpenseInput} from "~/data/validation.server";
+import {requireUserSession} from "~/data/auth.server";
 
 export default function AddExpensesPage() {
-  const navigate = useNavigate()  // useNavigate() => Remix Hook
+    const navigate = useNavigate()  // useNavigate() => Remix Hook
 
-  function closeHandler(){
-    navigate('..')
-  }
+    function closeHandler() {
+        navigate('..')
+    }
 
-  return (
-      <Modal onClose={closeHandler}>
-        <ExpenseForm />
-      </Modal>   
-  );
+    return (
+        <Modal onClose={closeHandler}>
+            <ExpenseForm/>
+        </Modal>
+    );
 }
 
 // CODE THAT TALKS WITH MONGODB AND STORES DATA
 
+export async function loader({request}) {
+    await requireUserSession(request)
+}
 
-export async function action({request}){
-  const formData = await request.formData()
-  const expenseData = Object.fromEntries(formData) //get Key:Value Pairs Object
-  // formData.get('title')  One Method
+export async function action({request}) {
+    const formData = await request.formData()
+    const expenseData = Object.fromEntries(formData) //get Key:Value Pairs Object
+    // formData.get('title')  One Method
 
-  try {
-    validateExpenseInput(expenseData);
-  } catch (error) {
-    return error; // when this happens it is loaded simply like data, and it can be catched with useActionData() at expenseForm Component
-  }
+    try {
+        validateExpenseInput(expenseData);
+    } catch (error) {
+        return error; // when this happens it is loaded simply like data, and it can be catched with useActionData() at expenseForm Component
+    }
 
-  await addExpense(expenseData)
-  return redirect('/expenses')  //Must return smth se sbo
+    await addExpense(expenseData)
+    return redirect('/expenses')  //Must return smth se sbo
 }
 
 /* NOTES

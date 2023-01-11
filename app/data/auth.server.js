@@ -53,6 +53,15 @@ export async function destroyUserSession(request) {
 
 }
 
+export async function requireUserSession(request){
+    const userId = await getUserFromSession(request);
+
+    //WILL BE CALLED AS GUARD
+    if(!userId){
+        throw redirect('/auth?mode=login');                                               // THIS CANCELS THE FUNCTION AND REDIRECTS , BUT IT WON'T TRIGGER A catchBoundary
+    }
+}
+
 export async function signup({email, password}) {  // Object destructuring
 
     //VALIDATION FOR UNIQUE EMAIL
