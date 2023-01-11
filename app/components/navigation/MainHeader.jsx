@@ -21,7 +21,7 @@ function MainHeader() {
                 <ul>
                     <li>
                         {userId && (
-                            <Form>
+                            <Form method="delete" action="/logout" id="logout-form">
                                 <button className="cta-alt">Logout</button>
                             </Form>
                         )}

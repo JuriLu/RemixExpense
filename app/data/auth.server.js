@@ -25,18 +25,32 @@ async function createUserSession(userId, redirectPath) {
     })                                        //logic to create a new response, in which will be stored the cookie
 }
 
-export async function getUserFromSession(request){
+export async function getUserFromSession(request) {
     const session = await sessionStorage.getSession(
         request.headers.get('Cookie')
     );
 
     const userId = session.get('userId')
 
-    if(!userId){
+    if (!userId) {
         return null
     } else {
         return userId
     }
+}
+
+export async function destroyUserSession(request) {
+    const session = await sessionStorage.getSession(
+        request.headers.get('Cookie')
+    )
+
+    return redirect('/', {
+        headers: {
+            'Set-Cookie': await sessionStorage.destroySession(session)
+        }
+    })
+
+
 }
 
 export async function signup({email, password}) {  // Object destructuring
