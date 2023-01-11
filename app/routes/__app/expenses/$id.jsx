@@ -4,7 +4,6 @@ import ExpenseForm from "~/components/expenses/ExpenseForm";
 import Modal from "~/components/util/Modal";
 import {deleteExpense, updateExpense} from "~/data/expenses.server";
 import {validateExpenseInput} from "~/data/validation.server";
-import {requireUserSession} from "~/data/auth.server";
 // import { getExpense } from "~/data/expenses.server";
 
 export default function UpdateExpensesPage() {

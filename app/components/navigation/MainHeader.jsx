@@ -1,9 +1,13 @@
 import {Form, Link, NavLink, useLoaderData} from '@remix-run/react';
 import Logo from '../util/Logo';
+import {FaUserAlt} from "react-icons/fa";
 
 function MainHeader() {
 
-    const userId = useLoaderData()
+    const user = useLoaderData()
+    const userId = user.id
+    const userEmail = user.email
+
     return (
         <header id="main-header">
             <Logo/>
@@ -16,6 +20,11 @@ function MainHeader() {
                         <NavLink to="/pricing">Pricing</NavLink>
                     </li>
                 </ul>
+            </nav>
+            <nav id="cta-nav">
+                <div className='cta'>
+                    <span><FaUserAlt className='userIconPadding'/> {userEmail}</span>
+                </div>
             </nav>
             <nav id="cta-nav">
                 <ul>

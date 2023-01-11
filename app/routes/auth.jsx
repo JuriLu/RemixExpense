@@ -1,4 +1,3 @@
-import { redirect } from "@remix-run/node";
 import AuthForm from "~/components/auth/AuthForm";
 import { login, signup } from "~/data/auth.server";
 import { validateCredentials } from "~/data/validation.server";
@@ -10,11 +9,10 @@ export default function AuthPage() {
 
 export async function action({ request }) {
   const searchParams = new URL(request.url).searchParams;
-  const authMode = searchParams.get("mode") || "login";
+  const  authMode = searchParams.get("mode") || "login";
 
   const formData = await request.formData();
   const credentials = Object.fromEntries(formData);
-  console.log(credentials);
 
   //Validation
   try {

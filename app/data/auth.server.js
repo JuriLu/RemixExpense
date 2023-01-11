@@ -64,6 +64,14 @@ export async function requireUserSession(request) {
     return userId
 }
 
+export async function getUser(id) {  // we don't need the userId here because we are getting from getExpenses (useMatches())
+    try {
+        return await prisma.user.findFirst({where: {id}})
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 export async function signup({email, password}) {  // Object destructuring
 
     //VALIDATION FOR UNIQUE EMAIL

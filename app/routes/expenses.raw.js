@@ -6,9 +6,9 @@ import {getExpenses} from "~/data/expenses.server"
 import {requireUserSession} from "~/data/auth.server";
 
 export async function loader({request}) {
-    await requireUserSession(request)
+   const userId =  await requireUserSession(request)
 
-    const expenses = await getExpenses()
+    const expenses = await getExpenses(userId)
     if (!expenses || expenses.length === 0) {
         return 'No Data Loaded'
     }
