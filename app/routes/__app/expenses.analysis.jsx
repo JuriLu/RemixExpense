@@ -18,8 +18,8 @@ export default function ExpensesAnalysisPage() {
 }
 
 export async function loader({request}) {
-    await requireUserSession(request)
-    const expenses = await getExpenses()
+    const userId = await requireUserSession(request)
+    const expenses = await getExpenses(userId)  // this was made to get the analysis of the expenses of the logged user
 
     if (!expenses || expenses.length === 0) {
         throw json(

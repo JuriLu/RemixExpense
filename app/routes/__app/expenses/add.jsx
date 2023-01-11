@@ -2,7 +2,7 @@ import {redirect} from "@remix-run/node";
 import {useNavigate} from "@remix-run/react";
 import ExpenseForm from "~/components/expenses/ExpenseForm";
 import Modal from "~/components/util/Modal";
-import {addExpense} from "~/data/expenses.server";   // because of .sever this will be imported on backend bundle
+import {addExpense} from "~/data/expenses.server"; // because of .sever this will be imported on backend bundle
 import {validateExpenseInput} from "~/data/validation.server";
 import {requireUserSession} from "~/data/auth.server";
 
@@ -22,11 +22,10 @@ export default function AddExpensesPage() {
 
 // CODE THAT TALKS WITH MONGODB AND STORES DATA
 
-export async function loader({request}) {
-    await requireUserSession(request)
-}
 
 export async function action({request}) {
+    const userId = await requireUserSession(request)
+
     const formData = await request.formData()
     const expenseData = Object.fromEntries(formData) //get Key:Value Pairs Object
     // formData.get('title')  One Method
@@ -37,7 +36,7 @@ export async function action({request}) {
         return error; // when this happens it is loaded simply like data, and it can be catched with useActionData() at expenseForm Component
     }
 
-    await addExpense(expenseData)
+    await addExpense(expenseData, userId)
     return redirect('/expenses')  //Must return smth se sbo
 }
 

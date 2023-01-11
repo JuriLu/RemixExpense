@@ -22,7 +22,7 @@ function MainHeader() {
                     <li>
                         {userId && (
                             <Form method="delete" action="/logout" id="logout-form">
-                                <button className="cta-alt">Logout</button>
+                                <button className="cta">Logout</button>
                             </Form>
                         )}
                         {!userId && (

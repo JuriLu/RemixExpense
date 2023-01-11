@@ -21,9 +21,6 @@ export default function UpdateExpensesPage() {
     );
 }
 
-export async function loader({request}) {
-    await requireUserSession(request)
-}
 
 export async function action({params, request}) {
     const expenseId = params.id;
