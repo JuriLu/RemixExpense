@@ -24,15 +24,6 @@ async function createUserSession(userId,redirectPath){
           }
      })                                        //logic to create a new response, in which will be stored the cookie
 }
-// Get cookie user from request
-export async function getUserFromSession(request){
-   const session = await sessionStorage.getSession(request.header.get('Cookie'))
-   const userId = session.get('userId')
-
-   if(!userId){
-     return null
-   } return userId
-}
 
 export async function signup({email,password}){  // Object destructuring
      //VALIDATION FOR UNIQUE EMAIL
