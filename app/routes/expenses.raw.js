@@ -2,12 +2,16 @@
 //  layout component
 // Resource Route
 
-import { getExpenses } from "~/data/expenses.server"
+import {getExpenses} from "~/data/expenses.server"
+import {requireUserSession} from "~/data/auth.server";
 
-export async function loader(){
-  const expenses =  await getExpenses()
-  if(!expenses || expenses.length === 0) {
-    return 'No Data Loaded'
-  }
-  return expenses
+export async function loader({request}) {
+    await requireUserSession(request)
+
+    const expenses = await getExpenses()
+    if (!expenses || expenses.length === 0) {
+        return 'No Data Loaded'
+    }
+    return expenses
 }
+
